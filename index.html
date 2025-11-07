@@ -4,6 +4,138 @@
     <title>home page</title>
     </head>
   <body>
-    hi
+    import { Link } from 'react-router-dom';
+import { Button } from '../components/ui/button';
+import { Card } from '../components/ui/card';
+import { TrendingUp, Brain, Users, BarChart, Shield, Zap } from 'lucide-react';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+
+export function HomePage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-card">
+      {/* Hero Section */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <TrendingUp className="w-16 h-16 text-primary" />
+            <h1 className="text-5xl text-white">Stockify</h1>
+          </div>
+          <p className="text-xl text-muted-foreground mb-8">Precision-Driven Stock Insights Powered by AI</p>
+          <div className="flex items-center justify-center">
+            <Button size="lg" asChild>
+              <Link to="/signup">Get Started</Link>
+            </Button>
+          </div>
+        </div>
+
+        {/* Hero Image */}
+        <div className="rounded-lg overflow-hidden shadow-2xl mb-16">
+          <ImageWithFallback
+            src="https://images.unsplash.com/photo-1649003515353-c58a239cf662?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMGNoYXJ0c3xlbnwxfHx8fDE3NjExODIyNzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            alt="Stock Market Analytics"
+            className="w-full h-96 object-cover"
+          />
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <Card className="p-6 text-center">
+            <div className="text-4xl mb-2 text-primary">92%</div>
+            <div className="text-muted-foreground">Prediction Accuracy</div>
+          </Card>
+          <Card className="p-6 text-center">
+            <div className="text-4xl mb-2 text-green-500">10K+</div>
+            <div className="text-muted-foreground">Predictions Generated</div>
+          </Card>
+          <Card className="p-6 text-center">
+            <div className="text-4xl mb-2 text-purple-500">500+</div>
+            <div className="text-muted-foreground">Active Users</div>
+          </Card>
+        </div>
+
+        {/* Features Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl text-center mb-12 text-white">Powerful Features</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Brain className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl mb-2 text-white">LSTM Neural Network</h3>
+              <p className="text-muted-foreground">Advanced deep learning model trained on historical market data</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-green-500/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BarChart className="w-8 h-8 text-green-500" />
+              </div>
+              <h3 className="text-xl mb-2 text-white">Real-Time Analytics</h3>
+              <p className="text-muted-foreground">Live stock data and interactive visualization charts</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-purple-500/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-purple-500" />
+              </div>
+              <h3 className="text-xl mb-2 text-white">Community Chat</h3>
+              <p className="text-muted-foreground">Discuss predictions anonymously with other traders</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-orange-500/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-orange-500" />
+              </div>
+              <h3 className="text-xl mb-2 text-white">Secure Platform</h3>
+              <p className="text-muted-foreground">Your data is encrypted and protected at all times</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-red-500/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-8 h-8 text-red-500" />
+              </div>
+              <h3 className="text-xl mb-2 text-white">Fast Predictions</h3>
+              <p className="text-muted-foreground">Get stock forecasts in seconds with our optimized model</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-indigo-500/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-8 h-8 text-indigo-500" />
+              </div>
+              <h3 className="text-xl mb-2 text-white">Prediction History</h3>
+              <p className="text-muted-foreground">Track your predictions and analyze performance over time</p>
+            </div>
+          </div>
+        </div>
+
+        {/* How It Works */}
+        <div className="bg-gradient-to-r from-primary to-purple-600 rounded-2xl p-12 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="relative z-10">
+            <h2 className="text-4xl text-center mb-12">How Stockify Works</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              <div className="flex flex-col items-center group">
+                <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110 shadow-xl">
+                  <span className="text-5xl">1</span>
+                </div>
+                <h3 className="text-2xl mb-3">Select Your Stock</h3>
+                <p className="opacity-90 text-center leading-relaxed">Pick leading stocks like TCS, RELIANCE, or INFY.</p>
+              </div>
+              <div className="flex flex-col items-center group">
+                <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110 shadow-xl">
+                  <span className="text-5xl">2</span>
+                </div>
+                <h3 className="text-2xl mb-3">Analyze the Data</h3>
+                <p className="opacity-90 text-center leading-relaxed">Our AI decodes years of market trends using deep learning.</p>
+              </div>
+              <div className="flex flex-col items-center group">
+                <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110 shadow-xl">
+                  <span className="text-5xl">3</span>
+                </div>
+                <h3 className="text-2xl mb-3 text-center">Get Accurate Predictions</h3>
+                <p className="opacity-90 text-center leading-relaxed">Receive precise 7-day forecasts with confidence insights.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
     </body>
 </html>
