@@ -1,0 +1,56 @@
+.features-section {
+  padding: 80px 10%;
+  background-color: #0d1117;
+  color: white;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  gap: 60px 40px; /* Vertical and Horizontal spacing */
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Creating the colored circles for the icons */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle circle background */
+}
+
+/* Simple colors to match Figma icons */
+.blue { border: 2px solid #2f80ed; color: #2f80ed; }
+.green { border: 2px solid #27ae60; color: #27ae60; }
+.purple { border: 2px solid #9b51e0; color: #9b51e0; }
+.orange { border: 2px solid #f2994a; color: #f2994a; }
+.red { border: 2px solid #eb5757; color: #eb5757; }
+.blue-light { border: 2px solid #56ccf2; color: #56ccf2; }
+
+.feature-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.feature-item p {
+  color: #8b949e;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 250px;
+}

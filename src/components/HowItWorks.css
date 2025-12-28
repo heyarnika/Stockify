@@ -1,0 +1,60 @@
+/* The main section wrapper that creates space around the blue card */
+.how-section {
+  padding: 80px 5%;
+  background-color: #0d1117; /* Dark background to match the rest of your site */
+}
+
+/* The blue card itself */
+.how-container {
+  background-color: #2f80ed; /* Solid Stockify Blue */
+  padding: 60px 40px;
+  border-radius: 24px;
+  text-align: center;
+  color: white;
+}
+
+.how-title {
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+}
+
+/* This makes the three steps sit side-by-side */
+.steps-wrapper {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+/* Styles for each individual step (1, 2, and 3) */
+.step-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The white circular background for the numbers */
+.step-number {
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.step-item h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.step-item p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 250px;
+  opacity: 0.9;
+}
