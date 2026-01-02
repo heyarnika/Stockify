@@ -1,0 +1,55 @@
+.dashnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: #0b0e14;
+  border-bottom: 1px solid #21262d;
+}
+
+.middle-section {
+  display: flex;
+  gap: 15px;
+}
+
+.nav{
+  background: none;
+  border: none;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.navactive {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #2f81f7;
+  color: white;
+  border-radius: 8px;
+}
+
+.nav:hover {
+  color: white;
+}
+
+.logo-text {
+  color: white;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}

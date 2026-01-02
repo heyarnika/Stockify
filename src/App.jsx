@@ -1,17 +1,13 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features'; 
-import HowItWorks from './components/HowItWorks';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
 
-function Home() {
+function App() {
+  // To work on Dashboard, just change <Home /> to <Dashboard /> below
   return (
-    <div className="home-container">
-      <Navbar />
-      <Hero />
-      <Features />
-      <HowItWorks />
+    <div className="App">
+      <Dashboard/> 
     </div>
   );
 }
 
-export default Home;
+export default App;

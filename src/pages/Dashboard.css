@@ -1,0 +1,15 @@
+.greeting {
+  padding-bottom: 30px;
+  padding-left: 10px;
+  margin:10px;
+}
+
+.greeting h2 {
+  font-size: 36px;
+  color: white;
+  margin-bottom: 5px; 
+}
+
+.greeting p {
+  font-size: 16px;
+  color: #94a3b8; 

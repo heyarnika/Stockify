@@ -1,11 +1,15 @@
 import Dashnav from '../components/Dashnav';
+import './Dashboard.css';
 
 function Dashboard() {
   return (
     <div className="pagebg">
       <Dashnav />
-      <h1>Dashboard</h1>
-      <p>Welcome to your dashboard!</p>
+      <div className='greeting'>
+        <h2>Market Dashboard</h2>
+        <p>Hi, cutiees - Track today's trending stocks and market movements</p>
+      </div>
+      
     </div>
   );
 }

@@ -1,11 +1,15 @@
 import Navbar from '../components/Navbar';
-import Hero from '../components/Hero'; 
+import Hero from '../components/Hero';
+import Features from '../components/Features'; 
+import HowItWorks from '../components/HowItWorks';
 
 function Home() {
   return (
-    <div className="pagebg">
+    <div className="pagebg"> {/* Use your new background class! */}
       <Navbar />
-      <Hero /> 
+      <Hero />
+      <Features />
+      <HowItWorks />
     </div>
   );
 }
