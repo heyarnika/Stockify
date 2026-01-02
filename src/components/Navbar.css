@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 5%;
+  /* Fixed padding: 15px Top/Bottom, 80px Left/Right */
+  padding: 15px 80px;
   background-color: #0d1117; 
   color: white;
   border-bottom: 1px solid #30363d;
@@ -13,18 +14,14 @@
   align-items: center;
   gap: 10px;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 20px;
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
   align-items: center;
-}
-
-.nav-links a {
-  color: #8b949e;
-  text-decoration: none;
+  /* Since we removed the text links, this gap only affects future items */
+  gap: 20px;
 }
 
 .nav-btn {
@@ -33,5 +30,6 @@
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
+  font-size: 16px;
   cursor: pointer;
 }
