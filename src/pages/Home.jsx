@@ -1,11 +1,11 @@
 import Navbar from '../components/Navbar';
-import Hero from '../components/Hero'; // Add this line
+import Hero from '../components/Hero'; 
 
 function Home() {
   return (
-    <div className="home-page">
+    <div className="pagebg">
       <Navbar />
-      <Hero /> {/* Replace the <main> block with this */}
+      <Hero /> 
     </div>
   );
 }

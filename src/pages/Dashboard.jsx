@@ -1,8 +1,8 @@
-
+import Dashnav from '../components/Dashnav';
 
 function Dashboard() {
   return (
-    <div className="dashboard-page">
+    <div className="pagebg">
       <Dashnav />
       <h1>Dashboard</h1>
       <p>Welcome to your dashboard!</p>
