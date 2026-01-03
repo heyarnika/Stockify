@@ -31,7 +31,7 @@ td {
     font-size: 15px;
 }
 
-/* Helper classes to match the vibe */
+
 .dim { color: #8b949e; }
 .up { color: #3fb950; }
 .down { color: #f85149; }
@@ -42,5 +42,11 @@ td {
     font-size: 12px;
 }
 
-.up-bg { background: rgba(63, 185, 80, 0.1); color: #3fb950; }
-.down-bg { background: rgba(248, 81, 73, 0.1); color: #f85149; }
+.up-bg {
+  background: rgba(63, 185, 80, 0.1);
+  color: #3fb950;
+}
+.down-bg {
+  background: rgba(248, 81, 73, 0.1); 
+  color: #f85149;
+}
