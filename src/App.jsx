@@ -1,11 +1,12 @@
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import Predict from './pages/Predict';
 
 function App() {
-  // To see home page, just change <Home /> to <Dashboard /> below!!
+  // guyss To see home page, just change <Home /> to <Dashboard /> below!!
   return (
     <div className="App">
-      <Dashboard/> 
+      <Predict/> 
     </div>
   );
 }
