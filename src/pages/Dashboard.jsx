@@ -1,4 +1,5 @@
 import Dashnav from '../components/Dashnav';
+import Trendcards from '../components/Trendcards';
 import './Dashboard.css';
 
 function Dashboard() {
@@ -9,6 +10,7 @@ function Dashboard() {
         <h2>Market Dashboard</h2>
         <p>Hi, cutiees - Track today's trending stocks and market movements</p>
       </div>
+      <Trendcards />
       
     </div>
   );
