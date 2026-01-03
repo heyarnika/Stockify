@@ -1,0 +1,46 @@
+.trendtable {
+    margin: 20px;
+    background-color: #161b22;
+    color: white;
+    padding: 20px;
+    border: 1px solid #21262d;
+    border-radius: 12px;
+}
+
+.trendtable h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    color: #8b949e;
+    padding: 12px 10px;
+    border-bottom: 1px solid #21262d;
+    font-size: 18px;
+}
+
+td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #21262d;
+    font-size: 15px;
+}
+
+/* Helper classes to match the vibe */
+.dim { color: #8b949e; }
+.up { color: #3fb950; }
+.down { color: #f85149; }
+
+.box {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.up-bg { background: rgba(63, 185, 80, 0.1); color: #3fb950; }
+.down-bg { background: rgba(248, 81, 73, 0.1); color: #f85149; }

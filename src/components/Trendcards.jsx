@@ -3,7 +3,6 @@ import './Trendcards.css';
 function Trendcards() {
   return (
     <div className="spacer">
-     
       <div className="card">
         <div className="icon">📈</div>
         <div className="text">
