@@ -4,6 +4,8 @@ function Predict() {
   return (
     <div className="pagebg">
       <Predictnav />
+      <h2>Stock Prediction Dashboard</h2>
+      
       
     </div>
   );
