@@ -6,7 +6,7 @@ function App() {
   // guyss To see home page, just change <Home /> to <Dashboard /> below!!
   return (
     <div className="App">
-      <Dashboard/> 
+      <Predict/> 
     </div>
   );
 }

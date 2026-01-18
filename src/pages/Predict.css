@@ -1,4 +1,38 @@
-.pagebg h2{
+/* 1. Make the background dark to match your Figma design */
+.pagebg {
+    background-color: #0d1117; /* Dark black/blue background */
+    min-height: 100vh;
     color: white;
+}
+
+/* 2. Space out your title */
+.pagebg h2 {
     margin-left: 20px;
+    padding-top: 20px;
+    color: #ffffff;
+}
+
+/* 3. Style the button so it's easy to see */
+.predict-btn {
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Simple blue button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.predict-btn:hover {
+    background-color: #0056b3; /* Darker blue when you hover */
+}
+
+/* 4. The Chart Box - This is the most important part! */
+.chart-box {
+    margin: 20px;
+    padding: 20px;
+    background-color: #161b22; /* Slightly lighter gray box for the chart */
+    border-radius: 10px;
+    border: 1px solid #30363d; /* Subtle border */
 }

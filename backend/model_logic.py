@@ -2,42 +2,49 @@ import numpy as np
 import pandas as pd
 from tensorflow.keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
+import os
 
-def get_30_day_forecast():
-    # 1. Load the same data to get the most recent prices and the scaler(scaling and values MUST be same as in train.py)
-    df = pd.read_csv('backend/tcs_data.csv', header=2)
+# We now pass 'ticker' as an argument so this function is universal
+def get_30_day_forecast(ticker):
+    # 1. Create dynamic paths based on the ticker name
+    data_path = f'backend/{ticker}_data.csv'
+    model_path = f'backend/{ticker}_model.h5'
+    
+    # Load the specific data for the requested stock
+    df = pd.read_csv(data_path, header=2)
     df.columns = ['Date', 'Close', 'High', 'Low', 'Open', 'Volume']
     
-
     close_prices = df[['Close']].values
     
+    # Scaling MUST be consistent with how the model was trained
     scaler = MinMaxScaler(feature_range=(0, 1))
     scaled_data = scaler.fit_transform(close_prices)
     
-    #  Load your trained brain
-    model = load_model('backend/tcs_model.h5')
+    # Load the specific 'Brain' for this company
+    model = load_model(model_path)
     
     # Prepare the last 60 days of data for prediction
     last_60_days = scaled_data[-60:]
     x_future = last_60_days.reshape((1, 60, 1))
     
-    # The Hallucination
+    # The Hallucination (Recursive Forecasting)
     future_predictions = []
     for _ in range(30):
-        pred = model.predict(x_future, verbose=0) # verbose=0 keeps terminal clean!!
+        pred = model.predict(x_future, verbose=0)
         future_predictions.append(pred[0, 0])
         
-        # MOST IMP! Drop oldest add the new prediction
+        # Drop oldest day and add the new prediction to the window
         x_future = np.append(x_future[:, 1:, :], [[pred[0]]], axis=1)
     
-    # inversion
+    # Inverse scaling to get the actual stock prices
     future_predictions = np.array(future_predictions).reshape(-1, 1)
     unscaled_predictions = scaler.inverse_transform(future_predictions)
      
-    # Convert to a simple list of numbers for Flask since it doesn't like numpy arrays thus the list
+    # Convert to a list for Flask compatibility
     return unscaled_predictions.flatten().tolist()
 
-# only for quick testing of this file separately. COMMENT THIS PART OUT LATER!
+# Testing block - you can change 'tcs' to 'reliance' to test different ones
 if __name__ == "__main__":
-    print("Generating test forecast...")
-    print(get_30_day_forecast())
+    test_ticker = "tcs"
+    print(f"Generating test forecast for {test_ticker}...")
+    print(get_30_day_forecast(test_ticker)) 

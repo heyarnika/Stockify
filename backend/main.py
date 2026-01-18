@@ -6,16 +6,21 @@ app = Flask(__name__)
 # CORS allows your React frontend to talk to this Python backend
 CORS(app)
 
-@app.route('/predict/tcs', methods=['GET'])
-def predict_tcs():
+# We use <ticker> so the URL can be /predict/reliance, /predict/infy, etc.
+@app.route('/predict/<ticker>', methods=['GET'])
+def predict_stock(ticker):
     try:
-        # Call the logic from our model_logic.py file
-        predictions = get_30_day_forecast()
+        # We pass the 'ticker' variable from the URL into our logic function
+        predictions = get_30_day_forecast(ticker.lower())
         
+        # If model_logic returned an error dictionary instead of a list
+        if isinstance(predictions, dict) and "error" in predictions:
+            return jsonify(predictions), 404
+
         # Send the numbers back to the website
         return jsonify({
             "status": "success",
-            "ticker": "TCS.NS",
+            "ticker": ticker.upper(),
             "forecast": predictions
         })
     except Exception as e:
