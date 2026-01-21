@@ -1,46 +1,63 @@
-import React, { useState } from 'react';
 import Predictnav from '../components/Predictnav';
-import { LineChart, Line, ResponsiveContainer, YAxis } from 'recharts';
 import './Predict.css';
 
 function Predict() {
-  const [data, setData] = useState([]);
-
-  // The simplest possible way to get the numbers
-  async function getData() {
-    try {
-      const res = await fetch('https://laughing-space-orbit-x5qgjvp7wgw53x9p-5000.app.github.dev/predict/tcs');
-      const json = await res.json();
-      
-      // Turn [10, 20] into [{p: 10}, {p: 20}] so the chart can read it
-      const formatted = json.forecast.map(num => ({ p: num }));
-      setData(formatted);
-    } catch (error) {
-      console.error("Failed to fetch:", error);
-      alert("Make sure your Flask server is running on Port 5000 and is set to PUBLIC!");
-    }
-  }
-
   return (
     <div className="pagebg">
       <Predictnav />
-      <h2>Stock Prediction Dashboard</h2>
+      <div className="predict-content">
+        <h2 className="title">Stock Prediction Dashboard</h2>
 
-      {/* Basic Section for the Chart */}
-      <section className="chart-box">
-        <button onClick={getData} className="predict-btn">
-          Get Forecast
-        </button>
+        <div className="top-section">
+          <div className="box">
+            <label>Select Stock</label>
+            <select className="input-field">
+              <option>TCS - Tata Consultancy S</option>
+              <option>RELIANCE - Reliance Ind</option>
+              <option>INFY - Infosys Ltd</option>
+              <option>HDFCBANK - HDFC Bank</option>
+              <option>ICICIBANK - ICICI Bank</option>
+              <option>BHARTIARTL - Bharti Airtel</option>
+              <option>ITC - ITC Limited</option>
+              <option>SBIN - State Bank of India</option>
+            </select>
+          </div>
 
-        <div style={{ width: '100%', height: 300 }}>
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data}>
-              <YAxis hide={true} domain={['auto', 'auto']} /> 
-              <Line type="monotone" dataKey="p" stroke="#00d2ff" strokeWidth={3} dot={false} />
-            </LineChart>
-          </ResponsiveContainer>
+          <div className="box">
+            <label>Time Range</label>
+            <select className="input-field">
+              <option>7 Days</option>
+              <option>30 Days</option>
+              <option>60 Days</option>
+              <option>90 Days</option>
+            </select>
+          </div>
+
+          <div className="button-row">
+            <button className="btn-action">Fetch Data</button>
+            <button className="btn-action">🔮 Predict</button>
+          </div>
         </div>
-      </section>
+
+        <div className="stats-section">
+          <div className="stat-card">
+            <label>Current Price</label>
+            <p className="big-text">₹3692.78</p>
+          </div>
+
+          <div className="stat-card">
+            <label>Change</label>
+            <p className="big-text red-text">📉 -0.45%</p>
+          </div>
+        </div>
+
+        <div className="chart-area">
+          <h3>TCS - Price Chart</h3>
+          <div className="chart-placeholder">
+            Chart visualization will appear here...
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

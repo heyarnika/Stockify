@@ -7,49 +7,93 @@
   border-bottom: 1px solid #21262d;
 }
 
-.middle-section {
-  display: flex;
-  gap: 15px;
-}
-
-.nav{
-  background: none;
-  border: none;
-  color: #94a3b8;
+.left-section {
   display: flex;
   align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  padding: 8px 12px;
-  font-size: 14px;
-}
-
-.navactive {
-  background: none;
-  border: none;
-  color: #94a3b8;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  padding: 8px 12px;
-  font-size: 14px;
-  background-color: #2f81f7;
-  color: white;
-  border-radius: 8px;
-}
-
-.nav:hover {
-  color: white;
 }
 
 .logo-text {
   color: white;
   font-weight: bold;
   margin-left: 8px;
+  font-size: 18px;
 }
 
-.left-section {
+.middle-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Base style for all nav items */
+.nav, .navactive {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.nav {
+  color: #94a3b8;
+}
+
+.nav:hover {
+  color: white;
+}
+
+.navactive {
+  background-color: #2f81f7;
+  color: white;
+  border-radius: 8px;
+}
+
+/* --- DROPDOWN LOGIC --- */
+
+.dropdown {
+  position: relative; /* Keeps the menu anchored to the button */
+}
+
+.dropdown-content {
+  display: none;        /* Hidden by default */
+  position: absolute;
+  top: 100%;           /* Sits right below the nav bar */
+  left: 0;
+  background-color: white; 
+  min-width: 170px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 100;        /* Floating on top */
+  padding: 8px 0;
+  margin-top: 5px;
+}
+
+.dropdown-content a {
+  color: #1f2937;      /* Dark text for white background */
+  padding: 10px 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f5f9;
+  color: #2f81f7;
+}
+
+/* THE HOVER TRICK: Show menu when mouse enters the dropdown area */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Right section for Logout */
+.right-section {
   display: flex;
   align-items: center;
 }

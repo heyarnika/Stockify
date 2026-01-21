@@ -13,8 +13,19 @@ function Dashnav() {
         <button className="nav"><span>✨</span> Predict</button>
         <button className="nav"><span>🗨️</span> Community</button>
         <button className="nav"><span>📅</span> Historical</button>
-        {/*dowpdown????*/}
-        <button className="nav"><span>📈</span> Market Types</button>
+        
+        {/* Simple CSS-only Dropdown */}
+        <div className="dropdown">
+          <button className="nav">
+            <span>📈</span> Market Types <small>▾</small>
+          </button>
+          <div className="dropdown-content">
+            <a href="#">📈 Derivatives</a>
+            <a href="#">📊 Indexes</a>
+            <a href="#">🪙 Commodities</a>
+          </div>
+        </div>
+
         <button className="nav"><span>👤</span> Profile</button>
       </div>
 

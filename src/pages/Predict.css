@@ -1,38 +1,112 @@
-/* 1. Make the background dark to match your Figma design */
 .pagebg {
-    background-color: #0d1117; /* Dark black/blue background */
-    min-height: 100vh;
-    color: white;
+  background-color: #0b0e14;
+  min-height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
-/* 2. Space out your title */
-.pagebg h2 {
-    margin-left: 20px;
-    padding-top: 20px;
-    color: #ffffff;
+.predict-content {
+  padding: 40px 60px; /* Increased padding for better overall spacing */
 }
 
-/* 3. Style the button so it's easy to see */
-.predict-btn {
-    margin: 20px;
-    padding: 10px 20px;
-    background-color: #007bff; /* Simple blue button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+.title {
+  margin-bottom: 40px;
+  font-size: 28px;
 }
 
-.predict-btn:hover {
-    background-color: #0056b3; /* Darker blue when you hover */
+.top-section {
+  display: flex;
+  gap: 40px; /* Increased gap between the input boxes and buttons */
+  align-items: flex-end;
+  margin-bottom: 40px;
 }
 
-/* 4. The Chart Box - This is the most important part! */
-.chart-box {
-    margin: 20px;
-    padding: 20px;
-    background-color: #161b22; /* Slightly lighter gray box for the chart */
-    border-radius: 10px;
-    border: 1px solid #30363d; /* Subtle border */
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.box label, .stat-card label {
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input-field {
+  background-color: #161b22;
+  color: white;
+  border: 1px solid #30363d;
+  padding: 12px;
+  border-radius: 8px;
+  min-width: 240px; /* Made boxes slightly wider */
+  outline: none;
+}
+
+.button-row {
+  display: flex;
+  gap: 20px; /* Space between Fetch and Predict buttons */
+  margin-left: 20px; /* Pushes buttons further away from inputs */
+}
+
+.btn-action {
+  background-color: #2f81f7; 
+  color: white;
+  width: 200px;      /* Longer buttons */
+  height: 42px;      /* Thinner look */
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  transition: background 0.3s;
+}
+
+.btn-action:hover {
+  background-color: #1a6edb;
+}
+
+.stats-section {
+  display: flex;
+  gap: 30px; /* Space between the two small stat cards */
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background-color: #12171f;
+  border: 1px solid #21262d;
+  padding: 25px;
+  border-radius: 12px;
+  min-width: 220px;
+}
+
+.big-text {
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.red-text {
+  color: #f85149;
+}
+
+.chart-area {
+  background-color: #12171f;
+  border: 1px solid #21262d;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.chart-placeholder {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #21262d;
+  margin-top: 20px;
+  color: #484f58;
+  font-size: 18px;
 }
