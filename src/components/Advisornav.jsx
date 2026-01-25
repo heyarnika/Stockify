@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Dashnav.css';
 
-function Dashnav() {
+function Advisornav() {
   return (
     <nav className="dashnav">
       <div className="left-section">
@@ -12,9 +12,9 @@ function Dashnav() {
       </div>
 
       <div className="middle-section">
-        <Link to="/dashboard" className="navactive"><span>☷</span> Dashboard</Link>
+        <Link to="/dashboard" className="nav"><span>☷</span> Dashboard</Link>
         <Link to="/predict" className="nav"><span>✨</span> Predict</Link>
-        <Link to="/advisor" className="nav"><span>🤖</span> FinAdvisor</Link>
+        <Link to="/advisor" className="navactive"><span>🤖</span> FinAdvisor</Link>
         <button className="nav"><span>📅</span> Historical</button>
         <button className="nav"><span>👤</span> Profile</button>
       </div>
@@ -26,4 +26,4 @@ function Dashnav() {
   ); 
 }
 
-export default Dashnav;
+export default Advisornav;

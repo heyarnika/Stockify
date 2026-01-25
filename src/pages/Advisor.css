@@ -1,0 +1,70 @@
+.chatbot-page-content {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.advisor-greeting {
+  margin-bottom: 30px;
+}
+
+.bot-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.bot-status h2 {
+  margin: 0;
+  color: white;
+}
+
+.status-online {
+  color: #238636;
+  font-size: 14px;
+  margin: 0;
+}
+
+.advisor-desc {
+  color: #94a3b8;
+  margin-top: 10px;
+}
+
+.chat-section {
+  margin: 20px 0;
+}
+
+.advisor-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.info-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.info-card h3 {
+  color: white;
+  margin-top: 0;
+}
+
+.info-card p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* Colors for the card tops */
+.card-blue { border-top: 4px solid #2f81f7; }
+.card-green { border-top: 4px solid #238636; }
+.card-purple { border-top: 4px solid #8957e5; }
+
+.info-card:hover {
+  transform: translateY(-5px);
+  background: #1c2128;
+}
