@@ -1,12 +1,10 @@
-import Dashnav from '../components/Dashnav';
 import { Link } from 'react-router-dom';
 import './Auth.css';
 
 function Login() {
   return (
     <div className="pagebg">
-      <Dashnav />
-      
+      {/* Navbar removed for a focused UI */}
       <div className="auth-wrapper">
         <div className="auth-card">
           <div className="auth-logo-container">
@@ -37,8 +35,6 @@ function Login() {
             <p className="footer-note">
               Don't have an account? <Link to="/signup" className="link-text">Create Account</Link>
             </p>
-            <div className="divider"><span>Or</span></div>
-            <button type="button" className="demo-btn">✨ Try Demo Mode</button>
           </div>
         </div>
       </div>

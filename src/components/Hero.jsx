@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'; // 1. Import Link
 import './Hero.css';
 import chartImg from '../assets/chart.png'; 
 
@@ -15,10 +16,10 @@ function Hero() {
           Precision-Driven Stock Insights Powered by AI
         </p>
 
-        <button className="hero-cta">Get Started</button>
+        {/* 2. Change button to Link and point it to /signup */}
+        <Link to="/signup" className="hero-cta">Get Started</Link>
       </div>
 
-      
       <div className="hero-full-width-image">
         <img 
           src={chartImg} 
