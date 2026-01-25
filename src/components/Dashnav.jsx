@@ -1,20 +1,24 @@
+import { Link } from 'react-router-dom';
 import './Dashnav.css';
 
 function Dashnav() {
   return (
     <nav className="dashnav">
       <div className="left-section">
-        <span className="logo-icon">📈</span> 
-        <span className="logo-text">Stockify</span>
+        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          <span className="logo-icon">📈</span> 
+          <span className="logo-text">Stockify</span>
+        </Link>
       </div>
 
       <div className="middle-section">
-        <button className="navactive"><span>☷</span> Dashboard</button>
-        <button className="nav"><span>✨</span> Predict</button>
+        {/* Use Link instead of button for internal pages */}
+        <Link to="/dashboard" className="navactive"><span>☷</span> Dashboard</Link>
+        <Link to="/predict" className="nav"><span>✨</span> Predict</Link>
+        
         <button className="nav"><span>🗨️</span> Community</button>
         <button className="nav"><span>📅</span> Historical</button>
         
-        {/* Simple CSS-only Dropdown */}
         <div className="dropdown">
           <button className="nav">
             <span>📈</span> Market Types <small>▾</small>
@@ -30,7 +34,8 @@ function Dashnav() {
       </div>
 
       <div className="right-section">
-        <button className="nav"><span>⏻</span> Logout</button>
+        {/* Logout usually redirects to Login or Home */}
+        <Link to="/login" className="nav"><span>⏻</span> Logout</Link>
       </div>
     </nav>
   ); 

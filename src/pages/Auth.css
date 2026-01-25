@@ -1,0 +1,86 @@
+/* 1. THE WRAPPER 
+   This uses Flexbox to grab the card and pull it to the center of the screen.
+*/
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); /* Subtracts height of your Dashnav */
+  padding: 20px;
+}
+
+/* 2. THE CARD
+   This is the box that holds your form. 
+*/
+.auth-card {
+  background-color: #12171f; /* Lighter than pagebg so it pops out */
+  border: 1px solid #21262d; /* Subtle border like GitHub's style */
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 450px; /* Stops the card from getting too wide */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* 3. INPUT GROUPS 
+   Each label + input pair is wrapped in this for spacing.
+*/
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  color: #f0f6fc;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  background-color: #0d1117; /* Dark background inside the boxes */
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  box-sizing: border-box; /* Ensures padding doesn't break the width */
+}
+
+/* 4. THE BUTTON */
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #2f81f7; /* Nice blue that matches your logos */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+.auth-btn:hover {
+  background-color: #1f6feb; /* Darkens slightly when you hover over it */
+}
+
+/* 5. THE FOOTER LINK */
+.footer-note {
+  margin-top: 25px;
+  color: #8b949e;
+  font-size: 14px;
+}
+
+.link-text {
+  color: #2f81f7;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link-text:hover {
+  text-decoration: underline;
+}
