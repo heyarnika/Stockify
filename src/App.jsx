@@ -4,7 +4,9 @@ import Dashboard from './pages/Dashboard';
 import Predict from './pages/Predict';
 import Login from './pages/Login';          
 import CreateAccount from './pages/CreateAccount';
-import Advisor from './pages/Advisor'; // Ensure the filename is Advisor.jsx in your pages folder
+import Advisor from './pages/Advisor';
+import Historical from './pages/Historical'; // Added import
+import Profile from './pages/Profile';       // Added import
 
 function App() {
   return (
@@ -19,10 +21,11 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/predict" element={<Predict />} />
         <Route path="/advisor" element={<Advisor />} />
+        <Route path="/historical" element={<Historical />} /> {/* Added Route */}
+        <Route path="/profile" element={<Profile />} />       {/* Added Route */}
         
-        {/* Note: If you ever want to add a "Page Not Found" 404, 
-          you would add a route with path="*" at the very bottom.
-        */}
+        {/* Catch-all route for 404 - Redirects back to Home */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );

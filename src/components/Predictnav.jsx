@@ -15,8 +15,8 @@ function Predictnav() {
         <Link to="/dashboard" className="nav"><span>☷</span> Dashboard</Link>
         <Link to="/predict" className="navactive"><span>✨</span> Predict</Link>
         <Link to="/advisor" className="nav"><span>🤖</span> FinAdvisor</Link>
-        <button className="nav"><span>📅</span> Historical</button>
-        <button className="nav"><span>👤</span> Profile</button>
+        <Link to="/historical" className="nav"><span>📅</span> Historical</Link>
+        <Link to="/profile" className="nav"><span>👤</span> Profile</Link>
       </div>
 
       <div className="right-section">
