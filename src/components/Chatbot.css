@@ -1,18 +1,90 @@
-.chat-placeholder-container {
-  height: 400px;
+.chat-box {
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  height: 450px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #161b22;
-  border: 2px dashed #30363d; /* Dashed border signifies "Work in Progress" */
-  border-radius: 12px;
-  color: #8b949e;
-  text-align: center;
+  flex-direction: column;
 }
 
-.chat-placeholder-content span {
-  font-size: 50px;
-  display: block;
-  margin-bottom: 15px;
-  opacity: 0.5;
+.message-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap for better spacing with icons */
+}
+
+/* The row containing the icon and the bubble */
+.message-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  max-width: 85%;
+}
+
+/* Bot alignment (Left) */
+.bot {
+  align-self: flex-start;
+}
+
+/* User alignment (Right) */
+.user {
+  align-self: flex-end;
+  flex-direction: row-reverse; /* Flips the icon to the right side of the text */
+}
+
+.icon {
+  font-size: 20px;
+  background: #161b22;
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid #30363d;
+}
+
+.bubble {
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.bot .bubble {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-bottom-left-radius: 2px;
+}
+
+.user .bubble {
+  background-color: #2f81f7;
+  border-bottom-right-radius: 2px;
+}
+
+/* Input Styles (Same as before) */
+.input-row {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid #30363d;
+  gap: 10px;
+}
+
+.input-row input {
+  flex: 1;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.input-row button {
+  background-color: #2f81f7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
 }
