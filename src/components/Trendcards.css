@@ -1,50 +1,49 @@
+/* This container keeps cards side-by-side */
 .spacer {
     display: flex;
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    justify-content: space-around;
+    padding: 10px;
 }
 
+/* The main card box */
 .card {
-    height: 60px;
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px;
+    flex: 1; /* Makes all cards the same width */
     display: flex;
     align-items: center;
-    background-color: #161b22;
-    border: 1px solid #21262d;
-    border-radius: 12px;
-    padding: 15px 20px;
-    margin: 10px;
-    color: white;
-    flex: 1;
     gap: 15px;
 }
 
 .icon {
-    background-color: #0d111775;
+    font-size: 24px;
+    background-color: #0d1117;
     padding: 10px;
     border-radius: 8px;
-    font-size: 20px;
-}
-
-.text {
-    display: flex;
-    flex-direction: column;
 }
 
 .text h3 {
-    margin-bottom: 4px;
-    font-size: 16px;
-    color: #8b949e;
+    margin: 0;
+    font-size: 14px;
+    color: #8b949e; /* Muted gray for labels */
+    text-transform: uppercase;
 }
 
 .text p {
-    margin: 0;
+    margin: 5px 0 0 0;
     font-size: 26px;
     font-weight: bold;
+    color: white; /* Default white color */
 }
-.green{
-    border: none;
+
+/* FIX: Clear green and red text with NO background blocks */
+.green-text {
+    color: #4ade80 !important; /* Sharp Neon Green */
 }
-.red{
-    border: none;
+
+.red-text {
+    color: #f85149 !important; /* Sharp Red */
 }
