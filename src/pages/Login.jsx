@@ -1,24 +1,21 @@
-import { useState } from 'react'; // 1. Import memory tool
-import { Link, useNavigate } from 'react-router-dom'; // Import navigation tool
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css';
 
 function Login() {
   const navigate = useNavigate();
 
-  // 2. Create the "Boxes" to hold user input
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // 3. This function runs when the "Sign In" button is clicked
   const handleLogin = (e) => {
-    e.preventDefault(); // Prevents the page from refreshing
+    e.preventDefault();
 
-    // In a real project, you'd send 'email' and 'password' to the backend here.
-    if (email && password) {
-      console.log("Logging in with:", email, password);
-      navigate('/dashboard'); // Move to internal pages
+    if (username && password) {
+      console.log("Attempting login for:", username);
+      navigate('/dashboard');
     } else {
-      alert("Please enter both email and password");
+      alert("Please enter both username and password");
     }
   };
 
@@ -33,17 +30,16 @@ function Login() {
 
           <div className="greeting">
             <h2>Sign In</h2>
-            <p>Welcome back! Please enter your details.</p>
           </div>
 
           <form className="auth-form" onSubmit={handleLogin}>
             <div className="input-group">
-              <label>Email</label>
+              <label>Username</label>
               <input 
-                type="email" 
-                placeholder="name@example.com" 
-                value={email} // Link input to state
-                onChange={(e) => setEmail(e.target.value)} // Update state on type
+                type="text" 
+                placeholder="Enter your username" 
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 required 
               />
             </div>
@@ -53,13 +49,12 @@ function Login() {
               <input 
                 type="password" 
                 placeholder="••••••••" 
-                value={password} // Link input to state
-                onChange={(e) => setPassword(e.target.value)} // Update state on type
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required 
               />
             </div>
 
-            {/* Change type to "submit" so it triggers the form onSubmit */}
             <button type="submit" className="auth-btn">Sign In</button>
           </form>
 

@@ -1,50 +1,43 @@
 import numpy as np
-import pandas as pd
+import yfinance as yf
 from tensorflow.keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
 import os
 
-# We now pass 'ticker' as an argument so this function is universal
-def get_30_day_forecast(ticker):
-    # 1. Create dynamic paths based on the ticker name
-    data_path = f'backend/{ticker}_data.csv'
-    model_path = f'backend/{ticker}_model.h5'
+def get_dynamic_forecast(ticker, days_to_predict):
+    # 1. Locate the AI model file (e.g., tcs_model.h5)
+    model_path = f'{ticker.lower()}_model.h5'
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"AI Model file '{model_path}' not found in backend folder.")
+
+    # 2. Get 1 year of data to calibrate the 'Scaler'
+    df = yf.download(f"{ticker.upper()}.NS", period="1y")
+    data = df[['Close']].values
     
-    # Load the specific data for the requested stock
-    df = pd.read_csv(data_path, header=2)
-    df.columns = ['Date', 'Close', 'High', 'Low', 'Open', 'Volume']
-    
-    close_prices = df[['Close']].values
-    
-    # Scaling MUST be consistent with how the model was trained
+    # 3. Scaling: LSTM models need data between 0 and 1 to work correctly
     scaler = MinMaxScaler(feature_range=(0, 1))
-    scaled_data = scaler.fit_transform(close_prices)
+    scaled_data = scaler.fit_transform(data)
     
-    # Load the specific 'Brain' for this company
+    # 4. Load the 'Brain' (.h5 file)
     model = load_model(model_path)
     
-    # Prepare the last 60 days of data for prediction
-    last_60_days = scaled_data[-60:]
-    x_future = last_60_days.reshape((1, 60, 1))
+    # 5. Take the most recent 60 days to start the prediction window
+    current_batch = scaled_data[-60:].reshape((1, 60, 1))
     
-    # The Hallucination (Recursive Forecasting)
     future_predictions = []
-    for _ in range(30):
-        pred = model.predict(x_future, verbose=0)
-        future_predictions.append(pred[0, 0])
-        
-        # Drop oldest day and add the new prediction to the window
-        x_future = np.append(x_future[:, 1:, :], [[pred[0]]], axis=1)
-    
-    # Inverse scaling to get the actual stock prices
-    future_predictions = np.array(future_predictions).reshape(-1, 1)
-    unscaled_predictions = scaler.inverse_transform(future_predictions)
-     
-    # Convert to a list for Flask compatibility
-    return unscaled_predictions.flatten().tolist()
 
-# Testing block - you can change 'tcs' to 'reliance' to test different ones
-if __name__ == "__main__":
-    test_ticker = "tcs"
-    print(f"Generating test forecast for {test_ticker}...")
-    print(get_30_day_forecast(test_ticker)) 
+    # 6. The Loop: We predict Day 1, then use Day 1's prediction to help predict Day 2
+    for _ in range(days_to_predict):
+        # Get one prediction point
+        current_pred = model.predict(current_batch, verbose=0)
+        future_predictions.append(current_pred[0, 0])
+        
+        # SLIDING WINDOW: Remove the oldest day, add the new prediction to the end
+        new_row = current_pred.reshape(1, 1, 1)
+        current_batch = np.append(current_batch[:, 1:, :], new_row, axis=1)
+    
+    # 7. Un-scale the data to turn 0.85 back into a real Rupee price like 3500.00
+    future_predictions = np.array(future_predictions).reshape(-1, 1)
+    actual_prices = scaler.inverse_transform(future_predictions)
+    
+    return actual_prices.flatten().tolist()
