@@ -1,7 +1,25 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Profilenav from '../components/Profilenav';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import './Profile.css';
 
 function Profile() {
+  const [performance, setPerformance] = useState([]);
+
+  useEffect(() => {
+    const fetchPerformance = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/model_performance');
+        // Setting state with the array of objects from Python
+        setPerformance(res.data);
+      } catch (err) {
+        console.error("Error loading performance stats");
+      }
+    };
+    fetchPerformance();
+  }, []);
+
   return (
     <div className="pagebg">
       <Profilenav />
@@ -12,67 +30,83 @@ function Profile() {
           <p className="subtitle">Account Centre</p>
         </header>
 
-        {/* User Info Section - Logout button removed */}
         <section className="profile-card main-card">
           <div className="user-header">
             <div className="avatar-circle">D</div>
             <div className="user-meta">
-              <h3>Demo User</h3>
-              <p>demo@stockify.com</p>
+              <h3>miss meow</h3>
+              <p>trial@stockify.com</p>
             </div>
           </div>
         </section>
 
-        {/* Stats Row */}
         <div className="stats-row">
           <div className="mini-stat">
             <span className="stat-icon blue-icon">👤</span>
-            <div className="stat-info">
-              <label>Total Predictions</label>
-              <p>0</p>
-            </div>
+            <div className="stat-info"><label>Total Predictions</label><p>124</p></div>
           </div>
           <div className="mini-stat">
             <span className="stat-icon green-icon">📈</span>
-            <div className="stat-info">
-              <label>Average Accuracy</label>
-              <p>0%</p>
-            </div>
+            <div className="stat-info"><label>Avg. Accuracy</label><p>94%</p></div>
           </div>
           <div className="mini-stat">
             <span className="stat-icon purple-icon">📊</span>
-            <div className="stat-info">
-              <label>Bullish Predictions</label>
-              <p>0</p>
-            </div>
+            <div className="stat-info"><label>Bullish</label><p>82</p></div>
           </div>
           <div className="mini-stat">
             <span className="stat-icon red-icon">📉</span>
-            <div className="stat-info">
-              <label>Bearish Predictions</label>
-              <p>0</p>
-            </div>
+            <div className="stat-info"><label>Bearish</label><p>42</p></div>
           </div>
         </div>
 
-        {/* Prediction History Placeholder */}
-        <section className="profile-card history-section">
-          <h3>Prediction History</h3>
-          <div className="empty-placeholder">
-            <p>No predictions yet</p>
-            <span>Start making predictions from the Dashboard to see your history here</span>
+        <section className="profile-card chart-section">
+          <h3>Model Performance Trends</h3>
+          <div style={{ width: '100%', height: 350, marginTop: '20px' }}>
+            <ResponsiveContainer width="100%" height="100%">
+              {/* Passing the fetched data to the chart */}
+              <LineChart data={performance}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2d3748" vertical={false} />
+                
+                {/* Fixed: dataKey matches 'month' from Python */}
+                <XAxis dataKey="month" stroke="#94a3b8" fontSize={12} tickLine={false} />
+                
+                {/* Left Axis for Accuracy (80-100 range) */}
+                <YAxis yAxisId="left" stroke="#10b981" fontSize={12} domain={[80, 100]} />
+                
+                {/* Right Axis for RMSE (0-20 range) */}
+                <YAxis yAxisId="right" orientation="right" stroke="#f59e0b" fontSize={12} domain={[0, 20]} />
+                
+                <Tooltip contentStyle={{ backgroundColor: '#1a202c', border: 'none' }} />
+                <Legend />
+                
+               
+                <Line 
+                  yAxisId="left" 
+                  type="monotone" 
+                  dataKey="accuracy" 
+                  name="Accuracy %" 
+                  stroke="#10b981" 
+                  strokeWidth={3} 
+                  dot={{ r: 6 }} 
+                />
+                <Line 
+                  yAxisId="right" 
+                  type="monotone" 
+                  dataKey="rmse" 
+                  name="RMSE (Error)" 
+                  stroke="#f59e0b" 
+                  strokeWidth={3} 
+                  dot={{ r: 6 }} 
+                />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
         </section>
 
-        {/* Chart Placeholder Section */}
-        <section className="profile-card chart-section">
-          <h3>Model Performance Trends</h3>
-          <div className="chart-placeholder-box">
-             <p>Chart visualization placeholder</p>
-             <div className="legend-preview">
-                <span className="dot green"></span> Accuracy % 
-                <span className="dot orange"></span> RMSE
-             </div>
+        <section className="profile-card history-section">
+          <h3>Recent Prediction History</h3>
+          <div className="empty-placeholder">
+            <p>Your session history is clear.</p>
           </div>
         </section>
       </div>

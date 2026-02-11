@@ -15,8 +15,8 @@ function Historical() {
     setLoading(true);
     setHistoryData([]); // Clear old graph while loading
     try {
+      // Fetching data from the historical endpoint
       const res = await axios.get(`http://localhost:5000/historical_data?ticker=${ticker}&start=${startDate}&end=${endDate}`);
-      // Ensure we use .forecast to match our main.py change
       setHistoryData(res.data.forecast);
     } catch (err) {
       alert("Error fetching data. Check if your Python terminal is running!");
@@ -33,10 +33,14 @@ function Historical() {
           <div className="box">
             <label>Select Stock</label>
             <select className="input-field" value={ticker} onChange={(e) => setTicker(e.target.value)}>
-              <option value="TCS">TCS</option><option value="RELIANCE">RELIANCE</option>
-              <option value="INFY">INFY</option><option value="SBIN">SBIN</option>
-              <option value="HDFCBANK">HDFCBANK</option><option value="ICICIBANK">ICICIBANK</option>
-              <option value="BHARTIARTL">BHARTIARTL</option><option value="ITC">ITC</option>
+              <option value="TCS">TCS</option>
+              <option value="RELIANCE">RELIANCE</option>
+              <option value="INFY">INFY</option>
+              <option value="SBIN">SBIN</option>
+              <option value="HDFCBANK">HDFCBANK</option>
+              <option value="ICICIBANK">ICICIBANK</option>
+              <option value="BHARTIARTL">BHARTIARTL</option>
+              <option value="ITC">ITC</option>
             </select>
           </div>
           <div className="box">
@@ -47,8 +51,10 @@ function Historical() {
             <label>End Date (YYYY-MM-DD)</label>
             <input type="text" className="input-field" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
           </div>
+          
+          {/* Button text now remains constant as "Fetch Data" */}
           <button className="btn-action" onClick={fetchHistory}>
-            {loading ? "Fetching..." : "📅 Fetch Data"}
+            📅 Fetch Data
           </button>
         </div>
 
@@ -59,6 +65,7 @@ function Historical() {
                <PriceChart data={historyData} />
              ) : (
                <p style={{color: '#94a3b8', textAlign: 'center', marginTop: '100px'}}>
+                 {/* Loading state only shows inside the chart area */}
                  {loading ? "Loading..." : "Change dates and click Fetch Data"}
                </p>
              )}

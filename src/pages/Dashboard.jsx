@@ -42,7 +42,7 @@ function Dashboard() {
       <Dashnav />
       <div className='greeting'>
         <h2>Market Dashboard</h2>
-        <p>Hi, Team! Tracking live stocks for you.</p>
+        <p>Hi cutieee - Track today's trending stocks and market movements</p>
       </div>
 
       {loading ? (
