@@ -10,16 +10,16 @@ def get_dynamic_forecast(ticker, days_to_predict):
     if not os.path.exists(model_path):
         raise FileNotFoundError(f"AI Model file '{model_path}' not found.")
 
-    # 1. Get 1 year of data and find the last market date
+    #to get 1 year of data and find the last market date
     df = yf.download(f"{ticker.upper()}.NS", period="1y")
     last_market_date = df.index[-1]
     data = df[['Close']].values
     
-    # 2. Scaling
+    #Scaling
     scaler = MinMaxScaler(feature_range=(0, 1))
     scaled_data = scaler.fit_transform(data)
     
-    # 3. Load Model
+    #Load Model so it takes the last 60 rows if data for prediction
     model = load_model(model_path)
     current_batch = scaled_data[-60:].reshape((1, 60, 1))
     
@@ -33,7 +33,7 @@ def get_dynamic_forecast(ticker, days_to_predict):
         new_row = current_pred.reshape(1, 1, 1)
         current_batch = np.append(current_batch[:, 1:, :], new_row, axis=1)
     
-    # 5. Transform back to prices and pair with dates
+    # invrse scaling back into prices value
     actual_prices = scaler.inverse_transform(np.array(future_predictions).reshape(-1, 1)).flatten()
     
     final_forecast = []

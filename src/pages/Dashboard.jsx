@@ -8,33 +8,22 @@ import './Dashboard.css';
 function Dashboard() {
   const [stocks, setStocks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  const fetchMarketSnapshot = async () => {
+  const getPrices = async () => {
     try {
-      // CORRECTED: Removed the nested axios.get call
-      const response = await axios.get('http://127.0.0.1:5000/market_snapshot');
-      
-      if (Array.isArray(response.data)) {
-        setStocks(response.data);
-        setLoading(false);
-        setError(null);
-        console.log("Market Data Updated ✅");
-      }
+      const res = await axios.get('http://127.0.0.1:5000/market_snapshot');
+      setStocks(res.data);
+      setLoading(false);
     } catch (err) {
-      console.error("Connection error:", err);
-      setError("Failed to fetch live prices. Ensure Flask is running.");
+      console.error("Fetch failed");
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchMarketSnapshot();
-
-    // LIVE UPDATING: Refreshes data every 30 seconds
-    const interval = setInterval(fetchMarketSnapshot, 30000);
-
-    return () => clearInterval(interval);
+    getPrices();
+    const timer = setInterval(getPrices, 30000); // refresh every 30s
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -42,23 +31,15 @@ function Dashboard() {
       <Dashnav />
       <div className='greeting'>
         <h2>Market Dashboard</h2>
-        <p>Hi cutieee - Track today's trending stocks and market movements</p>
+        <p>Track today's trending stocks and market movements</p>
       </div>
 
       {loading ? (
-        <div className="loading-state">Looking for prices... 🔍</div>
-      ) : error ? (
-        <div className="error-state" style={{color: 'white', padding: '20px'}}>
-          ⚠️ {error}
-        </div>
+        <div className="loading-state">Syncing market prices...</div>
       ) : (
         <div className="dashboard-content">
-          {stocks.length > 0 && (
-            <>
-              <Trendcards marketData={stocks} />
-              <Trendtable marketData={stocks} />
-            </>
-          )}
+          <Trendcards marketData={stocks} />
+          <Trendtable marketData={stocks} />
         </div>
       )}
     </div>

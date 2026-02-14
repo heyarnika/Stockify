@@ -7,7 +7,7 @@ function PriceChart({ data }) {
       <LineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="#2d3748" vertical={false} />
         
-        {/* XAxis now uses actual dates sent from Python */}
+    
         <XAxis 
           dataKey="date" 
           stroke="#94a3b8" 

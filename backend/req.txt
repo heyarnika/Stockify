@@ -1,15 +1,21 @@
-# --- Core Data & Math ---
+# --- Web Server & API ---
+flask
+flask-cors
+flask-bcrypt
+PyJWT
+
+# --- Database ---
+pymongo
+dnspython
+
+# --- Stock Data & Finance ---
+yfinance
 pandas
 numpy
-yfinance
 
-# --- Machine Learning Brain ---
+# --- AI & Machine Learning ---
 tensorflow
 scikit-learn
 
-# --- Backend Server Bridge ---
-flask
-flask-cors
-
-# --- Utility ---
+# --- Utilities ---
 python-dateutil
