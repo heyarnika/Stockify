@@ -5,3 +5,6 @@ tensorflow
 scikit-learn
 flask
 flask-cors
+pymongo
+flask-bcrypt
+pip install pyjwt

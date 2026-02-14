@@ -1,3 +1,4 @@
+from gemini_chat import get_chat_response
 from pymongo import MongoClient
 from flask_bcrypt import Bcrypt
 from flask import Flask, jsonify, request
@@ -15,6 +16,23 @@ app.config["SECRET_KEY"] = "82987745c4db9f5acf0b6998a73e064c37ecf5069497de240d57
 
 CORS(app)
 bcrypt = Bcrypt(app)
+
+# ================== GEMINI CHATBOT API ==================
+@app.route("/chat", methods=["POST"])
+def chat():
+    data = request.get_json()
+
+    if not data or "message" not in data:
+        return jsonify({"error": "No message provided"}), 400
+
+    user_message = data["message"]
+
+    bot_reply = get_chat_response(user_message)
+
+    return jsonify({
+        "status": "success",
+        "reply": bot_reply
+    })
 
 # ================== DATABASE ==================
 client = MongoClient(
