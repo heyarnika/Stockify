@@ -34,9 +34,15 @@ function Profile() {
           <p className="subtitle">Account Centre</p>
         </header>
 
-        <section className="profile-card main-card">
+        <section className="profile-card user-main-card">
           <div className="user-header">
-            <div className="avatar-circle">{user.name[0]}</div>
+            {/* NEW: Modern Profile Icon */}
+            <div className="profile-icon-wrapper">
+               <div className="avatar-icon">
+                 <div className="head"></div>
+                 <div className="body"></div>
+               </div>
+            </div>
             <div className="user-meta">
               <h3>{user.name}</h3>
               <p>{user.email}</p>
@@ -44,11 +50,25 @@ function Profile() {
           </div>
         </section>
 
+        {/* 2 CENTER ALIGNED CARDS WITH STYLISH BORDERS */}
         <div className="stats-row">
-          <div className="mini-stat">👤<div className="stat-info"><label>Predictions</label><p>124</p></div></div>
-          <div className="mini-stat">📈<div className="stat-info"><label>Accuracy</label><p>94%</p></div></div>
+          <div className="mini-stat pred-border">
+            <div className="stat-icon">👤</div>
+            <div className="stat-info">
+              <label>Predictions</label>
+              <p>124</p>
+            </div>
+          </div>
+          <div className="mini-stat acc-border">
+            <div className="stat-icon">📊</div>
+            <div className="stat-info">
+              <label>Accuracy</label>
+              <p>94%</p>
+            </div>
+          </div>
         </div>
 
+        {/* ORIGINAL CHART UNTOUCHED */}
         <section className="profile-card chart-section">
           <h3>Model Trends</h3>
           <div style={{ width: '100%', height: 350 }}>

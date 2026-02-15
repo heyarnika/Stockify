@@ -1,63 +1,107 @@
-a {
-  text-decoration: none;
-}
-
+/* 1. MAIN CONTAINER
+   Fixed height: 65px ensures vertical centering
+*/
 .dashnav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 30px;
-  background-color: #0b0e14;
-  border-bottom: 1px solid #21262d;
+  padding: 0 30px;
+  height: 65px; 
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
+/* 2. LOGO SECTION 
+   Forces text-decoration none to remove underlines
+*/
 .left-section {
+  display: flex;
+  align-items: center;
+  text-decoration: none !important; /* Removes link underlines */
+}
+
+.left-section a {
+  text-decoration: none !important; /* Extra safety for the word Stockify */
   display: flex;
   align-items: center;
 }
 
 .logo-text {
-  color: white;
-  font-weight: bold;
-  margin-left: 8px;
-  font-size: 18px;
+  color: #0f172a !important;
+  font-weight: 800;
+  margin-left: 10px;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  text-decoration: none !important;
 }
 
+/* 3. NAVIGATION LINKS 
+   Middle section holds your Predict, Dashboard, etc.
+*/
 .middle-section {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
-/* Unified style for Links */
-.nav, .navactive {
+/* Base style for inactive tabs */
+.nav {
   background: none;
   border: none;
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 8px 16px; /* Balanced pill shape */
   font-size: 14px;
-  transition: 0.2s;
+  font-weight: 600;
+  color: #64748b !important;
+  transition: all 0.2s ease;
   border-radius: 8px;
-}
-
-.nav {
-  color: #94a3b8;
+  text-decoration: none !important;
 }
 
 .nav:hover {
-  color: white;
-  background-color: #161b22;
+  background-color: #f1f5f9;
+  color: #3b82f6 !important;
 }
 
+/* 4. ACTIVE TAB FIX 
+   Matches padding of .nav to prevent the bar from resizing
+*/
 .navactive {
-  background-color: #2f81f7;
-  color: white;
+  background-color: #3b82f6 !important;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px; 
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none !important;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2); /* Techy glow */
 }
 
+/* 5. RIGHT SECTION
+   Contains the Logout button
+*/
 .right-section {
   display: flex;
   align-items: center;
+}
+
+.right-section a {
+  text-decoration: none !important;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.right-section a:hover {
+  color: #ef4444 !important; /* Red hover for Logout */
 }

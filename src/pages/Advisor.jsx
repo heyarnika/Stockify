@@ -11,7 +11,7 @@ function Advisor() {
         {/* Section 1: Header/Greeting */}
         <div className="advisor-greeting">
           <div className="bot-header">
-            <span className="bot-icon">🤖</span>
+            
             <div className="bot-status">
               <h2>Fin Advisor</h2>
               <p className="status-online">● AI-Powered Finance Assistant</p>

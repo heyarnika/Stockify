@@ -1,61 +1,45 @@
+.trendtable-wrapper {
+  width: 100%;
+}
+
 .trendtable {
-    margin: 20px;
-    background-color: #161b22; /* Professional dark gray */
-    color: white;
-    padding: 25px;
-    border: 1px solid #30363d;
-    border-radius: 12px;
-}
-
-.trendtable h2 {
-    font-size: 22px;
-    margin-bottom: 25px;
-    font-weight: 600;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 th {
-    text-align: left;
-    color: #8b949e;
-    padding: 12px 10px;
-    border-bottom: 1px solid #30363d;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  color: #475569; /* Darker slate for readability */
+  text-transform: uppercase;
+  font-size: 13px; /* Larger heading */
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 15px 10px;
+  border-bottom: 2px solid #f1f5f9;
+  text-align: left;
 }
 
 td {
-    padding: 18px 10px;
-    border-bottom: 1px solid #21262d;
-    font-size: 15px;
+  padding: 20px 10px;
+  color: #1e293b;
+  font-weight: 600;
+  border-bottom: 1px solid #f8fafc;
+  font-size: 15px;
 }
 
-/* Color Helpers */
-.dim { color: #8b949e; }
-.up { color: #3fb950; font-weight: 500; }
-.down { color: #f85149; font-weight: 500; }
-
-/* The colored box for the percentage */
-.box {
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+.dim-text {
+  color: #94a3b8;
+  font-weight: 400;
 }
 
-.up-bg {
-  background: rgba(63, 185, 80, 0.15); /* Soft green glow */
-  color: #3fb950;
+.pill {
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.down-bg {
-  background: rgba(248, 81, 73, 0.15); /* Soft red glow */
-  color: #f85149;
-}
+.up-bg { background: #dcfce7 !important; color: #15803d !important; }
+.down-bg { background: #fee2e2 !important; color: #b91c1c !important; }

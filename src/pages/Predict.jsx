@@ -12,9 +12,8 @@ function Predict() {
 
   const startPrediction = async () => {
     setLoading(true);
-    setForecast([]); // Clear previous chart 
+    setForecast([]); 
     try {
-      // Fetching prediction data 
       const res = await axios.get(`http://localhost:5000/predict/${ticker}?days=${days}`);
       setForecast(res.data.forecast);
     } catch (err) {
@@ -29,6 +28,8 @@ function Predict() {
       <Predictnav />
       <div className="predict-content">
         <h2 className="title">Stock Prediction Dashboard</h2>
+        
+        {/* The White Control Panel */}
         <div className="top-section">
           <div className="box">
             <label>Select Stock</label>
@@ -43,6 +44,7 @@ function Predict() {
               <option value="SBIN">SBIN</option>
             </select>
           </div>
+
           <div className="box">
             <label>Time Range</label>
             <select className="input-field" value={days} onChange={(e) => setDays(e.target.value)}>
@@ -53,20 +55,31 @@ function Predict() {
               <option value="90">90 Days</option>
             </select>
           </div>
+
           <button className="btn-action" onClick={startPrediction}>
-            🔮 Predict
+            <span>🔮</span> Predict
           </button>
         </div>
+
+        {/* The Dark Chart Display */}
         <div className="chart-area">
-          <div className="chart-container" style={{padding: '40px', textAlign: 'center', minHeight: '350px'}}>
-           
-             {loading ? (
-               <p style={{color: '#3b82f6', marginTop: '100px'}}>🧠 AI is analyzing...</p>
-             ) : forecast.length > 0 ? (
-               <PriceChart data={forecast} />
-             ) : (
-               <p style={{color: '#94a3b8', marginTop: '100px'}}>Click Predict to see the graph</p>
-             )}
+          <div className="chart-container">
+            {loading ? (
+              <div style={{ textAlign: 'center' }}>
+                <div className="loader"></div> {/* You can add a CSS spinner here */}
+                <p style={{ color: '#3b82f6', marginTop: '15px', fontWeight: '600' }}>
+                  🧠 AI is analyzing market patterns...
+                </p>
+              </div>
+            ) : forecast.length > 0 ? (
+              <PriceChart data={forecast} />
+            ) : (
+              <div style={{ textAlign: 'center' }}>
+                <p style={{ color: '#94a3b8', fontSize: '16px' }}>
+                  Select a ticker and click Predict to generate the AI graph
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

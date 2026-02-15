@@ -1,49 +1,42 @@
-/* This container keeps cards side-by-side */
-.spacer {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-}
-
-/* The main card box */
 .card {
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 10px;
-    flex: 1; /* Makes all cards the same width */
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  flex: 1; /* Forces cards to share horizontal space */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  transition: transform 0.2s ease;
+  min-width: 250px;
 }
 
-.icon {
-    font-size: 24px;
-    background-color: #0d1117;
-    padding: 10px;
-    border-radius: 8px;
+/* Stylish Left Borders */
+.active-accent { border-left: 6px solid #3b82f6; }
+.gainer-accent { border-left: 6px solid #10b981; }
+.loser-accent { border-left: 6px solid #ef4444; }
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
-.text h3 {
-    margin: 0;
-    font-size: 14px;
-    color: #8b949e; /* Muted gray for labels */
-    text-transform: uppercase;
+.icon { font-size: 24px; }
+
+.text h4 {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #64748b;
+  margin: 0 0 6px 0;
+  font-weight: 700;
 }
 
 .text p {
-    margin: 5px 0 0 0;
-    font-size: 26px;
-    font-weight: bold;
-    color: white; /* Default white color */
+  color: #0f172a !important;
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
 }
 
-/* FIX: Clear green and red text with NO background blocks */
-.green-text {
-    color: #4ade80 !important; /* Sharp Neon Green */
-}
-
-.red-text {
-    color: #f85149 !important; /* Sharp Red */
-}
+.green-text { color: #10b981 !important; }
+.red-text { color: #ef4444 !important; }

@@ -2,39 +2,35 @@ import React from 'react';
 import './Trendcards.css';
 
 function Trendcards({ marketData }) {
-    // These simple lines count how many stocks are green or red
     const gainers = marketData.filter(stock => stock.change >= 0).length;
     const losers = marketData.filter(stock => stock.change < 0).length;
 
     return (
-        <div className="spacer">
-            {/* Card 1: Total Stocks */}
-            <div className="card">
+        <> {/* Fragments allow the cards to be direct flex-children */}
+            <div className="card active-accent">
                 <div className="icon">📊</div>
                 <div className="text">
-                    <h3>Active Stocks</h3>
+                    <h4>Active Stocks</h4>
                     <p>{marketData.length}</p>
                 </div>
             </div>
 
-            {/* Card 2: Gainers */}
-            <div className="card">
+            <div className="card gainer-accent">
                 <div className="icon">📈</div>
                 <div className="text">
-                    <h3>Gainers</h3>
+                    <h4>Gainers</h4>
                     <p className="green-text">{gainers}</p>
                 </div>
             </div>
 
-            {/* Card 3: Losers */}
-            <div className="card">
+            <div className="card loser-accent">
                 <div className="icon">📉</div>
                 <div className="text">
-                    <h3>Losers</h3>
+                    <h4>Losers</h4>
                     <p className="red-text">{losers}</p>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

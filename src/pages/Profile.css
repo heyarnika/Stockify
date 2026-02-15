@@ -1,66 +1,130 @@
+.pagebg {
+  background-color: #f1f5f9 !important;
+  min-height: 100vh;
+}
+
 .profile-container {
-  padding: 20px 60px;
+  padding: 40px 60px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* White cards with soft shadows look more modern than dark borders */
+.profile-top h1 {
+  font-size: 32px;
+  font-weight: 700; /* Cleaner weight */
+  color: #0f172a;
+  margin: 0;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+/* Base card without sidebar border */
 .profile-card {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  border-radius: 12px;
-  padding: 25px;
+  border-radius: 20px;
+  padding: 30px;
   margin-bottom: 25px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
-.user-header {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.avatar-circle {
+/* CUSTOM PROFILE ICON */
+.profile-icon-wrapper {
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, #3b82f6, #6366f1);
-  color: white;
+  background: #f1f5f9;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
-  font-weight: bold;
+  overflow: hidden;
 }
 
-/* THE CENTERING LOGIC */
+.avatar-icon {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-icon .head {
+  width: 14px;
+  height: 14px;
+  background: #cbd5e1;
+  border-radius: 50%;
+  margin-bottom: 2px;
+}
+
+.avatar-icon .body {
+  width: 24px;
+  height: 16px;
+  background: #cbd5e1;
+  border-radius: 12px 12px 0 0;
+}
+
+.user-meta h3 {
+  font-size: 22px;
+  font-weight: 600; /* Not too bold */
+  color: #0f172a;
+  margin: 0;
+}
+
+.user-meta p {
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* CENTERED STATS */
 .stats-row {
   display: flex;
-  justify-content: center; /* Centers the cards horizontally */
-  gap: 25px;
-  margin-bottom: 25px;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
 }
 
 .mini-stat {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
-  padding: 20px;
-  border-radius: 12px;
+  border-radius: 16px;
+  padding: 15px 40px;
   display: flex;
   align-items: center;
-  gap: 15px;
-  min-width: 200px;
+  gap: 20px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.04);
+  min-width: 250px;
 }
 
+/* Stylish Left Borders only for these */
+.pred-border { border-left: 6px solid #6366f1; }
+.acc-border { border-left: 6px solid #10b981; }
+
+.stat-icon { font-size: 24px; }
+
 .stat-info label {
-  color: #64748b;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
+  color: #94a3b8;
+  font-weight: 700;
+  display: block;
+  letter-spacing: 0.5px;
 }
 
 .stat-info p {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   color: #1e293b;
   margin: 0;
+}
+
+.chart-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 25px;
 }

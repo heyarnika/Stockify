@@ -1,38 +1,30 @@
-a {
-  text-decoration: none;
-}
-.navbar {
+.navbar, .dashnav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* Fixed padding: 15px Top/Bottom, 80px Left/Right */
-  padding: 15px 80px;
-  background-color: #0d1117; 
-  color: white;
-  border-bottom: 1px solid #30363d;
+  padding: 15px 50px;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: bold;
-  font-size: 20px;
+.nav-logo, .logo-text {
+  color: #0f172a !important; /* Deep Navy */
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.5px;
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  /* Since we removed the text links, this gap only affects future items */
-  gap: 20px;
-}
-
-.nav-btn {
-  background-color: #2f80ed;
-  color: white;
-  border: none;
+.nav-links a, .nav {
+  color: #64748b !important;
+  font-weight: 600;
   padding: 8px 16px;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.navactive {
+  background-color: #3b82f6 !important;
+  color: #ffffff !important;
+  border-radius: 8px;
 }

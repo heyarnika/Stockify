@@ -1,59 +1,60 @@
-
 .hero {
-  background-color: #0d1117;
-  color: white;
+  background-color: #f1f5f9; /* Unified Slate-Grey background */
+  padding: 40px 0 0 0; /* Reduced top padding to move everything up */
+  text-align: center;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  padding: 0px; 
-}
-
-
-.hero-text-container {
-  text-align: center;
-  padding: 80px 20px 40px 20px; 
 }
 
 .hero-logo-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px; 
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.trend-icon {
-  font-size: 64px;
-  color: #2f80ed;
+  color: #0f172a !important;
+  font-size: 38px; /* Reduced from 52px to fix the "too big" word */
+  font-weight: 800;
+  margin-bottom: 5px; /* Tighter spacing */
+  letter-spacing: -1px;
 }
 
 .hero-subtitle {
-  color: #8b949e;
-  font-size: 24px;
-  margin-bottom: 30px;
+  color: #64748b !important;
+  font-size: 18px;
+  max-width: 500px;
+  margin: 0 auto 25px auto; /* Added bottom margin to push button down slightly */
 }
 
+/* Fixed the Get Started button positioning */
 .hero-cta {
   background-color: #2f80ed;
-  color: white;
-  border: none;
-  padding: 15px 40px;
+  color: white !important;
+  padding: 12px 30px;
   border-radius: 8px;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Space between button and the image below */
+  display: inline-block;
+  transition: transform 0.2s;
 }
 
+.hero-cta:hover {
+  transform: translateY(-2px);
+  background-color: #1e60bd;
+}
 
+/* Image spread across width but limited in length */
 .hero-full-width-image {
   width: 100%;
+  max-height: 450px; /* Caps the vertical length so it's not "too big" */
+  overflow: hidden; /* Crops the image cleanly at the height limit */
+  display: block;
+  margin: 0;
 }
 
 .full-screen-img {
-  width: 100%; 
-  height: auto;
-  display: block; 
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the width without stretching */
+  display: block;
 }

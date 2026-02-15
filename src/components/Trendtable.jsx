@@ -3,9 +3,8 @@ import './Trendtable.css';
 
 function Trendtable({ marketData }) {
   return (
-    <div className="trendtable">
-      <h2>Today's Trending Stocks</h2>
-      <table>
+    <div className="trendtable-wrapper">
+      <table className="trendtable">
         <thead>
           <tr>
             <th>Symbol</th>
@@ -20,15 +19,17 @@ function Trendtable({ marketData }) {
             <tr key={index}>
               <td>{stock.symbol}</td>
               <td>₹{stock.price}</td>
+              {/* Restored your original color logic */}
               <td className={stock.change >= 0 ? "up" : "down"}>
                 {stock.change >= 0 ? "+" : ""}{stock.change}
               </td>
               <td>
-                <span className={`box ${stock.change >= 0 ? "up-bg" : "down-bg"}`}>
+                <span className={`pill ${stock.change >= 0 ? "up-bg" : "down-bg"}`}>
                   {stock.change >= 0 ? "📈" : "📉"} {stock.percent}%
                 </span>
               </td>
-              <td className="dim">10.5M</td>
+              {/* Back to your original display */}
+              <td className="dim-text">10.5M</td>
             </tr>
           ))}
         </tbody>

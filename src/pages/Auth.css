@@ -1,86 +1,61 @@
-/* 1. THE WRAPPER 
-   This uses Flexbox to grab the card and pull it to the center of the screen.
-*/
+/* Centers the card on the screen */
 .auth-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 80px); /* Subtracts height of your Dashnav */
+  min-height: 80vh;
   padding: 20px;
 }
 
-/* 2. THE CARD
-   This is the box that holds your form. 
-*/
+/* The modern white login card */
 .auth-card {
-  background-color: #12171f; /* Lighter than pagebg so it pops out */
-  border: 1px solid #21262d; /* Subtle border like GitHub's style */
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
   padding: 40px;
-  border-radius: 12px;
+  border-radius: 20px;
   width: 100%;
-  max-width: 450px; /* Stops the card from getting too wide */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  text-align: center;
 }
 
-/* 3. INPUT GROUPS 
-   Each label + input pair is wrapped in this for spacing.
-*/
-.input-group {
-  text-align: left;
-  margin-bottom: 20px;
-}
-
+/* Input labels */
 .input-group label {
   display: block;
-  color: #f0f6fc;
+  text-align: left;
+  color: #64748b; /* Soft slate text */
+  font-weight: 600;
   margin-bottom: 8px;
   font-size: 14px;
 }
 
+/* Modern Input Boxes */
 .input-group input {
   width: 100%;
   padding: 12px;
-  background-color: #0d1117; /* Dark background inside the boxes */
-  border: 1px solid #30363d;
-  border-radius: 6px;
-  color: white;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  color: #1e293b;
   font-size: 14px;
-  box-sizing: border-box; /* Ensures padding doesn't break the width */
+  margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
-/* 4. THE BUTTON */
+/* The Blue Action Button */
 .auth-btn {
   width: 100%;
   padding: 14px;
-  background-color: #2f81f7; /* Nice blue that matches your logos */
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: 0.2s ease-in-out;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
 }
 
 .auth-btn:hover {
-  background-color: #1f6feb; /* Darkens slightly when you hover over it */
-}
-
-/* 5. THE FOOTER LINK */
-.footer-note {
-  margin-top: 25px;
-  color: #8b949e;
-  font-size: 14px;
-}
-
-.link-text {
-  color: #2f81f7;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.link-text:hover {
-  text-decoration: underline;
+  opacity: 0.9;
 }
