@@ -16,14 +16,7 @@ numpy
 # --- AI & Machine Learning ---
 tensorflow
 scikit-learn
-<<<<<<< HEAD
+google-generativeai
 
 # --- Utilities ---
 python-dateutil
-=======
-flask
-flask-cors
-pymongo
-flask-bcrypt
-pip install pyjwt
->>>>>>> 3c21baaa154347fc305ffa0ebf7a74cbf9a4bcfb
