@@ -1,26 +1,22 @@
-/* Dashboard.css */
-
-/* The top text area */
 .greeting {
-  padding: 20px;
-  margin: 10px;
+  padding: 30px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .greeting h2 {
-  font-size: 30px;
-  color: white;
-  margin-bottom: 5px;
+  font-size: 28px;
+  color: #0f172a; /* Strong dark title */
+  margin-bottom: 8px;
 }
 
 .greeting p {
   font-size: 16px;
-  color: #bdc3c7; /* Light gray color */
+  color: #64748b; /* Lighter grey for subtitle */
 }
 
-/* The loading message styling */
-.loading-state {
-  color: #3498db; /* Nice blue color */
-  text-align: center;
-  padding: 50px;
-  font-size: 20px;
+.dashboard-content {
+  padding: 0 40px 40px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }

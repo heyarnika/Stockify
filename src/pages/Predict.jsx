@@ -1,95 +1,77 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
-import Profilenav from '../components/Profilenav';
-import PriceChart from '../components/PriceChart'; // Unified chart component
-import './Profile.css';
+import Predictnav from '../components/Predictnav';
+import PriceChart from '../components/PriceChart'; 
+import './Predict.css';
 
-function Profile() {
-  const [performance, setPerformance] = useState([]);
-  const [user, setUser] = useState({ name: "User", email: "guest@stockify.com" });
+function Predict() {
+  const [ticker, setTicker] = useState('TCS');
+  const [days, setDays] = useState(7);
+  const [forecast, setForecast] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // Authenticate user session
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const decoded = jwtDecode(token);
-        setUser({ name: decoded.name, email: decoded.email });
-      } catch (e) {
-        console.error("Session sync failed");
-      }
+  const startPrediction = async () => {
+    setLoading(true);
+    setForecast([]); // Clear previous chart 
+    try {
+      // Fetching prediction data 
+      const res = await axios.get(`http://localhost:5000/predict/${ticker}?days=${days}`);
+      setForecast(res.data.forecast);
+    } catch (err) {
+      console.error(err);
+      alert("Prediction failed. Check if main.py is running!");
     }
-
-    // Load training performance metrics
-    axios.get('http://localhost:5000/model_performance')
-      .then(res => {
-        // We map 'accuracy' to 'price' so it works with your PriceChart.jsx logic
-        const formattedData = res.data.map(item => ({
-          date: item.month,
-          price: item.accuracy 
-        }));
-        setPerformance(formattedData);
-      })
-      .catch(err => console.error("Error loading performance stats"));
-  }, []);
+    setLoading(false);
+  };
 
   return (
     <div className="pagebg">
-      <Profilenav />
-      <div className="profile-container">
-        
-        <header className="profile-top">
-          <h1>Welcome, {user.name}</h1>
-          <p className="subtitle">Account Centre</p>
-        </header>
-
-        {/* Identity Section */}
-        <section className="profile-card main-card">
-          <div className="user-header">
-            <div className="avatar-circle">{user.name[0]}</div>
-            <div className="user-meta">
-              <h3>{user.name}</h3>
-              <p>{user.email}</p>
-            </div>
+      <Predictnav />
+      <div className="predict-content">
+        <h2 className="title">Stock Prediction Dashboard</h2>
+        <div className="top-section">
+          <div className="box">
+            <label>Select Stock</label>
+            <select className="input-field" value={ticker} onChange={(e) => setTicker(e.target.value)}>
+              <option value="TCS">TCS</option>
+              <option value="RELIANCE">RELIANCE</option>
+              <option value="INFY">INFY</option>
+              <option value="HDFCBANK">HDFCBANK</option>
+              <option value="ICICIBANK">ICICIBANK</option>
+              <option value="BHARTIARTL">BHARTIARTL</option>
+              <option value="ITC">ITC</option>
+              <option value="SBIN">SBIN</option>
+            </select>
           </div>
-        </section>
-
-        {/* Centered KPI Cards */}
-        <div className="centered-stats">
-          <div className="mini-stat">
-            <span className="stat-emoji">👤</span>
-            <div className="stat-info">
-              <label>Predictions</label>
-              <p>124</p>
-            </div>
+          <div className="box">
+            <label>Time Range</label>
+            <select className="input-field" value={days} onChange={(e) => setDays(e.target.value)}>
+              <option value="7">7 Days</option>
+              <option value="10">10 Days</option>
+              <option value="30">30 Days</option>
+              <option value="60">60 Days</option>
+              <option value="90">90 Days</option>
+            </select>
           </div>
-          <div className="mini-stat">
-            <span className="stat-emoji">📈</span>
-            <div className="stat-info">
-              <label>Accuracy</label>
-              <p>94%</p>
-            </div>
-          </div>
+          <button className="btn-action" onClick={startPrediction}>
+            🔮 Predict
+          </button>
         </div>
-
-        {/* Performance Chart Section */}
-        <section className="profile-card chart-section">
-          <h3>Model Accuracy Trends</h3>
-          <div className="chart-area" style={{ marginTop: '20px' }}>
-             {performance.length > 0 ? (
-               <PriceChart data={performance} />
+        <div className="chart-area">
+          <div className="chart-container" style={{padding: '40px', textAlign: 'center', minHeight: '350px'}}>
+           
+             {loading ? (
+               <p style={{color: '#3b82f6', marginTop: '100px'}}>🧠 AI is analyzing...</p>
+             ) : forecast.length > 0 ? (
+               <PriceChart data={forecast} />
              ) : (
-               <p style={{ color: '#94a3b8', textAlign: 'center', padding: '100px' }}>
-                 Loading model trends...
-               </p>
+               <p style={{color: '#94a3b8', marginTop: '100px'}}>Click Predict to see the graph</p>
              )}
           </div>
-        </section>
-
+        </div>
       </div>
     </div>
   );
 }
 
-export default Profile;
+export default Predict;

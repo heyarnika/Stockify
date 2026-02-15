@@ -1,10 +1,13 @@
-.chat-box {
-  background-color: #0d1117;
-  border: 1px solid #30363d;
-  border-radius: 8px;
-  height: 450px;
+.chat-container {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  height: 500px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  max-width: 800px;
+  margin: 20px auto;
 }
 
 .message-area {
@@ -13,78 +16,64 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Increased gap for better spacing with icons */
+  gap: 15px;
 }
 
-/* The row containing the icon and the bubble */
 .message-row {
   display: flex;
   align-items: flex-end;
   gap: 10px;
-  max-width: 85%;
+  max-width: 80%;
 }
 
-/* Bot alignment (Left) */
-.bot {
+.message-row.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message-row.bot {
   align-self: flex-start;
 }
 
-/* User alignment (Right) */
-.user {
-  align-self: flex-end;
-  flex-direction: row-reverse; /* Flips the icon to the right side of the text */
-}
-
-.icon {
-  font-size: 20px;
-  background: #161b22;
-  padding: 5px;
-  border-radius: 50%;
-  border: 1px solid #30363d;
-}
-
 .bubble {
-  color: white;
-  padding: 12px;
-  border-radius: 12px;
+  padding: 12px 16px;
+  border-radius: 15px;
   font-size: 14px;
-}
-
-.bot .bubble {
-  background-color: #161b22;
-  border: 1px solid #30363d;
-  border-bottom-left-radius: 2px;
+  line-height: 1.5;
 }
 
 .user .bubble {
-  background-color: #2f81f7;
-  border-bottom-right-radius: 2px;
+  background-color: #3b82f6;
+  color: white;
 }
 
-/* Input Styles (Same as before) */
+.bot .bubble {
+  background-color: #f1f5f9;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+}
+
 .input-row {
   display: flex;
   padding: 15px;
-  border-top: 1px solid #30363d;
+  border-top: 1px solid #e2e8f0;
   gap: 10px;
 }
 
 .input-row input {
   flex: 1;
-  background: #0d1117;
-  border: 1px solid #30363d;
-  color: white;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
   outline: none;
 }
 
 .input-row button {
-  background-color: #2f81f7;
+  background-color: #3b82f6;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 0 20px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
 }

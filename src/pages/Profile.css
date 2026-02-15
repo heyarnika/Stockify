@@ -1,31 +1,19 @@
-/* Container matches Dashboard.css max-width and centering */
 .profile-container {
-  padding: 40px 60px;
+  padding: 20px 60px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Header matches Dashboard's typography and spacing */
-.profile-top h1 {
-  font-size: 32px;
-  margin-bottom: 5px;
-}
-
-.subtitle {
-  color: #94a3b8;
-  margin-bottom: 30px;
-}
-
-/* Card borders and background now match Dashboard's table and card style */
+/* White cards with soft shadows look more modern than dark borders */
 .profile-card {
-  background-color: #161b22;
-  border: 1px solid #30363d;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   border-radius: 12px;
-  padding: 30px;
+  padding: 25px;
   margin-bottom: 25px;
 }
 
-/* User Header Alignment */
 .user-header {
   display: flex;
   align-items: center;
@@ -33,71 +21,46 @@
 }
 
 .avatar-circle {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, #58a6ff, #bc8cff);
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 36px;
+  font-size: 30px;
   font-weight: bold;
 }
 
-.user-meta h3 {
-  font-size: 24px;
-  margin: 0;
-}
-
-.user-meta p {
-  color: #94a3b8;
-  margin: 5px 0 0 0;
-}
-
-/* Updated Stats Row: Changed from Grid to Flex to center the two cards */
+/* THE CENTERING LOGIC */
 .stats-row {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: center; /* Centers the cards horizontally */
+  gap: 25px;
   margin-bottom: 25px;
 }
 
-/* Individual stat card borders and spacing */
 .mini-stat {
-  background-color: #161b22;
-  border: 1px solid #30363d;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
   padding: 20px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 15px;
-  min-width: 200px; /* Keeps them from shrinking compared to table items */
+  min-width: 200px;
 }
 
-/* Match the stat-info labels to Dashboard's secondary text color */
 .stat-info label {
-  color: #94a3b8;
-  font-size: 13px;
-  display: block;
+  color: #64748b;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 .stat-info p {
   font-size: 24px;
   font-weight: bold;
+  color: #1e293b;
   margin: 0;
-}
-
-/* Placeholder formatting to stay consistent with Dashboard empty states */
-.empty-placeholder {
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #484f58;
-}
-
-/* Chart container spacing */
-.chart-section {
-  margin-top: 10px;
 }
