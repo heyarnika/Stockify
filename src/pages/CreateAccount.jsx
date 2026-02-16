@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Auth.css';
 
 function CreateAccount() {
   const navigate = useNavigate();
 
-  // Simplified state to just Username and Password
-  const [username, setUsername] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -18,12 +19,19 @@ function CreateAccount() {
       return;
     }
 
-    if (username && password) {
-      console.log("New User Created:", { username, password });
-      // Logic for uniqueness check would happen at the backend level
-      navigate('/dashboard'); 
-    } else {
-      alert("Please fill in both fields.");
+    try {
+      const res = await axios.post("http://localhost:5000/signup", {
+        fullName,
+        email,
+        password
+      });
+
+      alert(res.data.message);
+      navigate("/login");
+    }
+    catch (err) {
+      alert("Signup failed. Email already exists?");
+      console.error(err);
     }
   };
 
@@ -31,9 +39,10 @@ function CreateAccount() {
     <div className="pagebg">
       <div className="auth-wrapper">
         <div className="auth-card">
+
           <div className="auth-logo-container">
-             <span className="logo-icon">📈</span> 
-             <span className="logo-text">Stockify</span>
+            <span className="logo-icon">📈</span> 
+            <span className="logo-text">Stockify</span>
           </div>
 
           <div className="greeting">
@@ -41,13 +50,25 @@ function CreateAccount() {
           </div>
 
           <form className="auth-form" onSubmit={handleSignup}>
+
             <div className="input-group">
-              <label>Username</label>
+              <label>Full Name</label>
               <input 
                 type="text" 
-                placeholder="Choose a unique username" 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Your full name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                required 
+              />
+            </div>
+
+            <div className="input-group">
+              <label>Email</label>
+              <input 
+                type="email" 
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required 
               />
             </div>
@@ -56,7 +77,7 @@ function CreateAccount() {
               <label>Password</label>
               <input 
                 type="password" 
-                placeholder="••••••••" 
+                placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required 
@@ -67,7 +88,7 @@ function CreateAccount() {
               <label>Confirm Password</label>
               <input 
                 type="password" 
-                placeholder="••••••••" 
+                placeholder="••••••••"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required 
@@ -82,6 +103,7 @@ function CreateAccount() {
               Already have an account? <Link to="/login" className="link-text">Sign in</Link>
             </p>
           </div>
+
         </div>
       </div>
     </div>

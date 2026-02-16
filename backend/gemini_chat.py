@@ -1,18 +1,16 @@
 import google.generativeai as genai
-import os
 
-# Set your Gemini API key
-genai.configure(api_key="AIzaSyBpeQbbWY68XxloDd7eAgsYowKjFNOdQ40")
+# Put your API key
+genai.configure(api_key="AIzaSyBXaLOkOkG5clW5dhYz9qijV-wFDk4rYiU")
 
-model = genai.GenerativeModel("gemini-pro")
+# USE A WORKING MODEL FROM YOUR LIST
+model = genai.GenerativeModel("models/gemini-2.5-flash")
 
 def get_chat_response(user_message):
     try:
-        response = model.generate_content(
-            f"You are a finance assistant. Answer clearly and simply.\nUser: {user_message}"
-        )
-
+        prompt = f"You are a finance assistant. Answer clearly and simply.\nUser: {user_message}"
+        response = model.generate_content(prompt)
         return response.text
 
     except Exception as e:
-        return f"Error: {str(e)}"
+        return "Gemini Error: " + str(e)

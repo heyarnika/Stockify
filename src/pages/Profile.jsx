@@ -1,76 +1,103 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
 import Profilenav from '../components/Profilenav';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import './Profile.css';
 
 function Profile() {
   const [performance, setPerformance] = useState([]);
-  const [user, setUser] = useState({ name: "User", email: "guest@stockify.com" });
+  const [user, setUser] = useState({ fullName: "User", email: "guest@stockify.com" });
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
+
+    // ===== GET USER PROFILE FROM FLASK =====
     if (token) {
-      try {
-        const decoded = jwtDecode(token);
-        setUser({ name: decoded.name, email: decoded.email });
-      } catch (e) { 
-        console.error("Session error"); 
-      }
+      axios.get("http://localhost:5000/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(res => {
+        setUser(res.data.user);
+        setHistory(res.data.prediction_history);
+      })
+      .catch(err => {
+        console.error("Profile load error", err);
+      });
     }
 
-    axios.get('http://localhost:5000/model_performance')
+    // ===== OPTIONAL: Model Performance Chart =====
+    axios.get("http://localhost:5000/model_performance")
       .then(res => setPerformance(res.data))
-      .catch(err => console.error("Stats error"));
+      .catch(() => console.log("No model stats API (ignore)"));
   }, []);
 
   return (
     <div className="pagebg">
       <Profilenav />
+
       <div className="profile-container">
         <header className="profile-top">
-          <h1>Welcome, {user.name}</h1>
+          <h1>Welcome, {user.fullName}</h1>
           <p className="subtitle">Account Centre</p>
         </header>
 
+        {/* USER CARD */}
         <section className="profile-card user-main-card">
           <div className="user-header">
-            {/* NEW: Modern Profile Icon */}
+
             <div className="profile-icon-wrapper">
-               <div className="avatar-icon">
-                 <div className="head"></div>
-                 <div className="body"></div>
-               </div>
+              <div className="avatar-icon">
+                <div className="head"></div>
+                <div className="body"></div>
+              </div>
             </div>
+
             <div className="user-meta">
-              <h3>{user.name}</h3>
+              <h3>{user.fullName}</h3>
               <p>{user.email}</p>
             </div>
           </div>
         </section>
 
-        {/* 2 CENTER ALIGNED CARDS WITH STYLISH BORDERS */}
+        {/* STATS */}
         <div className="stats-row">
           <div className="mini-stat pred-border">
             <div className="stat-icon">👤</div>
             <div className="stat-info">
-              <label>Predictions</label>
-              <p>124</p>
+              <label>Total Predictions</label>
+              <p>{history.length}</p>
             </div>
           </div>
+
           <div className="mini-stat acc-border">
             <div className="stat-icon">📊</div>
             <div className="stat-info">
-              <label>Accuracy</label>
-              <p>94%</p>
+              <label>Model Accuracy</label>
+              <p>94%</p> {/* static unless you compute real */}
             </div>
           </div>
         </div>
 
-        {/* ORIGINAL CHART UNTOUCHED */}
+        {/* PREDICTION HISTORY LIST */}
+        <section className="profile-card">
+          <h3>Recent Predictions</h3>
+
+          <ul style={{ color: "white" }}>
+            {history.map((h, i) => (
+              <li key={i}>
+                {h.ticker} | {h.days} days | {new Date(h.time).toLocaleString()}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* CHART SECTION */}
         <section className="profile-card chart-section">
           <h3>Model Trends</h3>
+
           <div style={{ width: '100%', height: 350 }}>
             <ResponsiveContainer>
               <LineChart data={performance}>
@@ -85,7 +112,9 @@ function Profile() {
               </LineChart>
             </ResponsiveContainer>
           </div>
+
         </section>
+
       </div>
     </div>
   );
