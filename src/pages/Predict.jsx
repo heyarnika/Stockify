@@ -14,7 +14,7 @@ function Predict() {
     setLoading(true);
     setForecast([]); 
     try {
-      const res = await axios.get(`http://localhost:5000/predict/${ticker}?days=${days}`);
+      const res = await axios.get(`https://stockify-o4wg.onrender.com/predict/${ticker}?days=${days}`);
       setForecast(res.data.forecast);
     } catch (err) {
       console.error(err);

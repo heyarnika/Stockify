@@ -22,7 +22,7 @@ function Profile() {
     const token = localStorage.getItem("token");
 
     if (token) {
-      axios.get("http://localhost:5000/profile", {
+      axios.get("https://stockify-o4wg.onrender.com/profile", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(res => {
@@ -33,7 +33,7 @@ function Profile() {
     }
 
     // Try to get real data, otherwise keep the mockData
-    axios.get("http://localhost:5000/model_performance")
+    axios.get("https://stockify-o4wg.onrender.com/model_performance")
       .then(res => {
         if(res.data.length > 0) setPerformance(res.data);
       })
