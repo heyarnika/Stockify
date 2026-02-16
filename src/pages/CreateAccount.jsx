@@ -20,7 +20,7 @@ function CreateAccount() {
     }
 
     try {
-      const res = await axios.post("https://stockify-o4wg.onrender.com/signup", {
+      const res = await axios.post("http://localhost:5000/signup", {
         fullName,
         email,
         password

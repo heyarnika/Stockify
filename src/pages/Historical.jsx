@@ -19,7 +19,7 @@ function Historical() {
     
     try {
       // Sending ticker, start, and end dates as "params"
-      const response = await axios.get(`https://stockify-o4wg.onrender.com/historical_data`, {
+      const response = await axios.get(`http://localhost:5000/historical_data`, {
         params: {
           ticker: ticker,
           start: startDate, // Example: "2025-01-01"
